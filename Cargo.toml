@@ -1,0 +1,7 @@
+[package]
+name = "tabla_multiplicar"
+version = "0.1.0"
+authors = ["JInfantesC"]
+edition = "2018"
+
+[dependencies]
