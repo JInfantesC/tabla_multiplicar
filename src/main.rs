@@ -6,8 +6,8 @@ fn main() {
 		let table_of:u32=args[1].parse::<u32>().unwrap();
 		for number in 1..11 {
 			println!(
-				"{} multiplied by {} is {}",
-				table_of, number, table_of*number);
+				"{:>width$} multiplied by {:>width$} is {:>width$}",
+				table_of, number, table_of*number, width=5);
 		}
 	}else{
 		println!("Please, give me a number")
