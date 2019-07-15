@@ -1,15 +1,27 @@
-use std::env;
+extern crate clap;
+
+use clap::{App,Arg};
 
 fn main() {
-	let args: Vec<String> = env::args().collect();
-	if args.len()>1{
-		let table_of:u32=args[1].parse::<u32>().unwrap();
-		for number in 1..11 {
-			println!(
-				"{:>width$} multiplied by {:>width$} is {:>width$}",
-				table_of, number, table_of*number, width=5);
-		}
-	}else{
-		println!("Please, give me a number")
+	let matches = App::new("Tabla de multiplicar")
+	                        .version("0.1.0")
+	                        .author("JInfantesC")
+	                        .about("Muestra la tabla de multiplicar del número definido")
+							.arg(Arg::with_name("numero")
+								.short("n")
+								.long("num")
+								.takes_value(true)
+								.help("Número de la tabla"))
+							.get_matches();
+	let table_of:u32 = matches.value_of("numero").unwrap_or("5").parse::<u32>().unwrap();
+	//let table_of:u32=args[1].parse::<u32>().unwrap();
+	for number in 1..11 {
+		println!(
+			"{:>width$} multiplied by {:>width$} is {:>width$}",
+			table_of, number, table_of*number, width=5);
 	}
 }
+//
+// fn printTable(table_of, ){
+//
+// }
